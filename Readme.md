@@ -15,7 +15,7 @@ Input Playlist Parsing: Parses the input playlist, identifies SCTE markers, and 
 ## Directory Structure
 
 ```plaintext
-app/
+hls-server-moving-window-approach/
 ├── adv/                       # Advertisement segments
 │   ├── ad1/                   # ad1 segments present here
 │   ├── ad2/                   # ad2 segments present here
@@ -59,7 +59,8 @@ app/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/hsprajwal01/HLS-Server-Moving-window-approach.git
+   git clone https://github.com/hsprajwal01/hls-server-moving-window-approach.git
+   cd hls-server-moving-window-approach
    ```
 
 2. Install dependencies:
@@ -72,14 +73,14 @@ app/
    - **Ad segments**:
      Download the Ad segments from Google Drive using this link:  
      [Advertisement Files](https://drive.google.com/drive/folders/18D0yC2LaDGC9MIWGMmtgQJFnkGV3aVnv?usp=drive_link)  
-     Once downloaded, place the contents in the `/` directory.
+     Once downloaded, place the contents in the `/hls-server-moving-window-approach` directory. 
 
 
 
    - **Content Segment** :
      Download the segment files from Google Drive using this link:  
      [Segment Files](https://drive.google.com/drive/folders/1XpKgiXPW1kvSlf8EbBriojl1PKEuqiX6?usp=drive_link)  
-     Once downloaded, place the contents in the `/` directory.
+     Once downloaded, place the contents in the `/hls-server-moving-window-approach` directory.
 
 
 ### Running the Application
