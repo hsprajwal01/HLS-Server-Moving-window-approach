@@ -1,0 +1,14 @@
+{{- if .Values.metallb.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: metallb-config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - {{ .Values.metallb.addressRangeStart }}-{{ .Values.metallb.addressRangeEnd }}
+{{- end }}

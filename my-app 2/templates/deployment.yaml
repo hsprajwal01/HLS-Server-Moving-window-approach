@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8084
+          env:
+            - name: SEGMENT_FOLDER
+              value: {{ .Values.env.SEGMENT_FOLDER }}
+            - name: MANIFEST_FOLDER
+              value: {{ .Values.env.MANIFEST_FOLDER }}
+            - name: MASTER_MANIFEST_PATH
+              value: {{ .Values.env.MASTER_MANIFEST_PATH }}
+          volumeMounts:
+            # - name: segment-volume
+            #   mountPath: /app/segments
+            - name: manifest-volume
+              mountPath: /app/manifests
+      volumes:
+        # - name: segment-volume
+        #   emptyDir: {}
+        - name: manifest-volume
+          emptyDir: {}

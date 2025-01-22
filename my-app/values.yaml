@@ -1,0 +1,47 @@
+replicaCount: 2
+
+image:
+  repository: hsp0001/go-app
+  tag: 0.0.1
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer
+  port: 8084
+  targetPort: 8084
+  nodePort: null
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+env:
+  SEGMENT_FOLDER: "/app/segments"
+  MANIFEST_FOLDER: "/app/manifests"
+  MASTER_MANIFEST_PATH: "/app/manifests/master.m3u8"
+
+serviceAccount:
+  create: true
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+metallb:
+  enabled: true
+  addressRangeStart: 192.168.49.240
+  addressRangeEnd: 192.168.49.250
