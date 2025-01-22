@@ -59,8 +59,7 @@ app/
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd app
+   git clone https://github.com/hsprajwal01/HLS-Server-Moving-window-approach.git
    ```
 
 2. Install dependencies:
@@ -68,22 +67,44 @@ app/
    go mod tidy
    ```
 
+3. Download Required Files:
+
+   - **Ad segments**:
+     Download the Ad segments from Google Drive using this link:  
+     [Advertisement Files](https://drive.google.com/drive/folders/18D0yC2LaDGC9MIWGMmtgQJFnkGV3aVnv?usp=drive_link)  
+     Once downloaded, place the contents in the `/` directory.
+
+
+
+   - **Content Segment** :
+     Download the segment files from Google Drive using this link:  
+     [Segment Files](https://drive.google.com/drive/folders/1XpKgiXPW1kvSlf8EbBriojl1PKEuqiX6?usp=drive_link)  
+     Once downloaded, place the contents in the `/` directory.
+
+
 ### Running the Application
 
 1. **Start the Server**:
    ```bash
    go run main.go start --port 8084
    ```
-or 
 
-   ```bash
-   ./hls-moving-window-app start --port 8080
-   ```
 
 2. **Access the Server**:
    - Master playlist: `http://localhost:8084/vod/master.m3u8`
    - Segments and other resources: `http://localhost:8084/vod/<resource>`
 
+### Build and Start the Server:
+
+- To build the application:
+
+     ```bash
+     go build -o hls-moving-window-app
+     ```
+- To start the server:
+     ```bash
+     ./hls-moving-window-app start --port 8084
+     ```
 
 ## Code Overview
 
